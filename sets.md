@@ -1,66 +1,120 @@
-# Python Sets & Booleans
+# Python Sets & Booleans Notes
 
 ## Sets
 
-```python
+``` python
 setone = {1, 2, 3, 4}
-Intersection
-Python
-Copy
+```
+
+------------------------------------------------------------------------
+
+## Intersection
+
+``` python
 setone & {1, 3}
 # {1, 3}
-Union
-Python
-Copy
+```
+
+**Explanation:** Returns common elements between sets.
+
+------------------------------------------------------------------------
+
+## Union
+
+``` python
 setone | {1, 3}
 # {1, 2, 3, 4}
 
 setone | {1, 3, 7}
 # {1, 2, 3, 4, 7}
-Original Set
-Python
-Copy
+```
+
+**Explanation:** Combines elements from both sets (no duplicates).
+
+------------------------------------------------------------------------
+
+## Original Set
+
+``` python
 setone
 # {1, 2, 3, 4}
-Difference
-Python
-Copy
+```
+
+------------------------------------------------------------------------
+
+## Difference
+
+``` python
 setone - {1, 2, 3, 4}
 # set()
-⚠️ Empty set uses set() — not {}
-{} represents a dictionary
-Python
-Copy
+```
+
+**Explanation:** Removes matching elements.
+
+------------------------------------------------------------------------
+
+## Empty Set Warning
+
+``` python
+set()
+```
+
+⚠️ Empty set uses `set()` --- not `{}`
+
+``` python
 type({})
 # <class 'dict'>
-Booleans
-Python
-Copy
+```
+
+**Explanation:** `{}` creates a dictionary, not a set.
+
+------------------------------------------------------------------------
+
+## Booleans
+
+``` python
 type(True)
 # <class 'bool'>
-Comparisons
-Python
-Copy
+```
+
+------------------------------------------------------------------------
+
+## Comparisons
+
+``` python
 True == 1
 # True
 
 False == 0
 # True
-Identity (Avoid with literals)
-Python
-Copy
+```
+
+**Explanation:** `True` behaves like `1`, `False` like `0`.
+
+------------------------------------------------------------------------
+
+## Identity (Avoid with literals)
+
+``` python
 True is 1
-# False (and gives a warning)
+# False
 
 False is 1
 # False
 
 True is 0
 # False
-⚠️ Use == for value comparison, not is
-Boolean Arithmetic
-Python
-Copy
+```
+
+⚠️ Use `==` for value comparison, not `is`.
+
+------------------------------------------------------------------------
+
+## Boolean Arithmetic
+
+``` python
 True + 4
 # 5
-True behaves like 1, and False behaves like 0
+```
+
+**Explanation:** `True = 1`, `False = 0`.
