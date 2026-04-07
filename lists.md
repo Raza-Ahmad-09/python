@@ -129,9 +129,3 @@ Range Function
 range(10)
 
 Generates numbers from 0 to 9 (lazy sequence).
-
-Improvements Summary ✅
-Use correct spelling: "Oolong" instead of "Olong".
-Avoid assigning strings directly in slice ("Lemon" → ["Lemon"]).
-Use consistent naming: tea_varieties (correct spelling).
-Prefer readable variable names and consistent casing.
