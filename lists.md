@@ -11,7 +11,8 @@ print(tea_varities)
 
 Prints the entire list as-is.
 
-Indexing
+## Indexing
+
 tea_varities[0]
 
 Accesses the first element (index starts from 0).
@@ -24,7 +25,8 @@ tea_varities[-1]
 
 Accesses the last element using negative indexing.
 
-Slicing
+## Slicing
+
 tea_varities[1:3]
 
 Returns elements from index 1 up to (but not including) index 3.
