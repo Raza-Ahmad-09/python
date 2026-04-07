@@ -1,131 +1,239 @@
-# Python List Operations – Quick Notes
+# 🐍 Python List Operations — Quick Notes
 
-## Creating a List
+> A **list** is an ordered, mutable collection that can hold mixed data types. Elements are indexed starting from `0`.
+
+---
+
+## 📋 Creating a List
+
+> Define a list using square brackets with comma-separated values.
+
 ```python
-tea_varities = ["Black", "Green", "Olong", "White"]
+tea_varieties = ["Black", "Green", "Oolong", "White"]
+```
 
-Creates a list with four string elements.
+> ⚠️ **Typo fixed throughout:** `"Olong"` → `"Oolong"` and `tea_varities` → `tea_varieties`
 
-Printing the List
-print(tea_varities)
+---
 
-Prints the entire list as-is.
+## 🖨️ Printing a List
 
-## Indexing
+> `print()` outputs the entire list including brackets and quotes.
 
-tea_varities[0]
+```python
+print(tea_varieties)
+# ['Black', 'Green', 'Oolong', 'White']
+```
 
-Accesses the first element (index starts from 0).
+---
 
-tea_varities[2]
+## 🔍 Indexing
 
-Accesses the third element.
+> Access individual elements by their position. Index starts at `0`; negative indices count from the end.
 
-tea_varities[-1]
+```python
+tea_varieties[0]    # 'Black'  ← first element
+tea_varieties[2]    # 'Oolong' ← third element
+tea_varieties[-1]   # 'White'  ← last element (negative indexing)
+```
 
-Accesses the last element using negative indexing.
+| Expression | Result | Note |
+|---|---|---|
+| `tea_varieties[0]` | `'Black'` | First element |
+| `tea_varieties[2]` | `'Oolong'` | Third element |
+| `tea_varieties[-1]` | `'White'` | Last element |
 
-## Slicing
+---
 
-tea_varities[1:3]
+## ✂️ Slicing
 
-Returns elements from index 1 up to (but not including) index 3.
+> Extract a portion of a list using `[start:stop]`. The `stop` index is **not included**.
 
-tea_varities[:3]
+```python
+tea_varieties[1:3]   # ['Green', 'Oolong'] ← index 1 and 2 only
+tea_varieties[:3]    # ['Black', 'Green', 'Oolong'] ← from start to index 2
+tea_varieties[1:]    # ['Green', 'Oolong', 'White'] ← index 1 to end
+tea_varieties[:]     # ['Black', 'Green', 'Oolong', 'White'] ← shallow copy
+```
 
-Returns elements from start to index 2.
+---
 
-tea_varities[1:]
+## ✏️ Modifying Elements
 
-Returns elements from index 1 to the end.
+> Lists are mutable — you can replace any element directly by index.
 
-tea_varities[:]
+```python
+tea_varieties[3] = "Herbal"
+# ['Black', 'Green', 'Oolong', 'Herbal']
+```
 
-Creates a shallow copy of the entire list.
+---
 
-Modifying Elements
-tea_varities[3] = "Herbal"
+## ⚠️ Slice Assignment
 
-Replaces the element at index 3.
+> Slice assignment replaces a range of elements. Be careful when assigning a **string** — it is iterable and will be broken into individual characters.
 
-Slice Assignment (Important Concept ⚠️)
-tea_varities[1:2] = "Lemon"
+```python
+# ❌ Incorrect — string is iterable, gets split into characters
+tea_varieties[1:2] = "Lemon"
+# ['Black', 'L', 'e', 'm', 'o', 'n', 'Oolong', 'White']
 
-Replaces slice with individual characters because a string is iterable.
+# ✅ Correct — wrap in a list to replace as a single element
+tea_varieties[1:2] = ["Lemon"]
+# ['Black', 'Lemon', 'Oolong', 'White']
+```
 
-✅ Better:
+---
 
-tea_varities[1:2] = ["Lemon"]
+## 🔁 Replacing Multiple Elements
 
-Replaces slice with a single list element.
+> Assign a list to a slice to replace multiple elements at once.
 
-Replacing Multiple Elements
-tea_varities[1:3] = ["Green", "Masala"]
+```python
+tea_varieties[1:3] = ["Green", "Masala"]
+# ['Black', 'Green', 'Masala', 'White']
+```
 
-Replaces multiple elements with new values.
+---
 
-Inserting Without Replacing
-tea_varities[1:1] = ["test", "test"]
+## ➕ Inserting Without Replacing
 
-Inserts elements at index 1 without removing anything.
+> Use an empty slice (`[n:n]`) to insert elements at a position without removing anything.
 
-Deleting Using Slice
-tea_varities[1:3] = []
+```python
+tea_varieties[1:1] = ["Mint", "Jasmine"]
+# ['Black', 'Mint', 'Jasmine', 'Green', 'Masala', 'White']
+```
 
-Removes elements from index 1 to 2.
+---
 
-Looping Through List
-for tea in tea_varities:
+## 🗑️ Deleting via Slice
+
+> Assign an empty list to a slice to remove elements from that range.
+
+```python
+tea_varieties[1:3] = []
+# Removes elements at index 1 and 2
+```
+
+---
+
+## 🔄 Looping Through a List
+
+> Use a `for` loop to iterate over each element.
+
+```python
+# Each element on its own line
+for tea in tea_varieties:
     print(tea)
 
-Iterates through each element.
-
-for tea in tea_varities:
+# All elements on one line, separated by '-'
+for tea in tea_varieties:
     print(tea, end="-")
+# Black-Green-Oolong-White-
+```
 
-Prints elements in one line separated by -.
+---
 
-Checking Membership
-if "Oolong" in tea_varities:
+## 🔎 Checking Membership
 
-Checks if an item exists in the list.
+> Use `in` to check whether an element exists in the list — returns `True` or `False`.
 
-⚠️ Note: "Oolong" vs "Olong" spelling matters.
+```python
+if "Oolong" in tea_varieties:
+    print("Oolong is available")
+```
 
-Adding Elements
-tea_varities.append("oolong")
+> ⚠️ **Spelling matters** — `"Oolong"` and `"Olong"` are treated as completely different strings.
 
-Adds an element at the end.
+---
 
-Removing Elements
-tea_varities.pop()
+## ➕ Adding Elements
 
-Removes and returns the last element.
+> `.append()` adds a single element to the **end** of the list.
 
-tea_varities.remove("Green")
+```python
+tea_varieties.append("Oolong")
+# ['Black', 'Green', 'White', 'Oolong']
+```
 
-Removes a specific element by value.
+---
 
-Inserting at Specific Position
-tea_varities.insert(1, "Green")
+## ➕ Inserting at a Specific Position
 
-Inserts an element at index 1.
+> `.insert(index, value)` adds an element at the given index, shifting everything after it right.
 
-Copying a List
-tea_varities_copy = tea_varities.copy()
+```python
+tea_varieties.insert(1, "Green")
+# ['Black', 'Green', 'White', 'Oolong']
+```
 
-Creates a shallow copy of the list.
+---
 
-List Comprehension
+## ❌ Removing Elements
+
+> Two ways to remove: by position (`.pop()`) or by value (`.remove()`).
+
+```python
+tea_varieties.pop()             # Removes & returns the last element
+tea_varieties.remove("Green")   # Removes the first occurrence of 'Green'
+```
+
+| Method | Removes By | Returns | Error If Missing? |
+|---|---|---|---|
+| `.pop()` | Position (default: last) | The removed element | `IndexError` |
+| `.remove(val)` | Value (first match) | `None` | `ValueError` |
+
+---
+
+## 📋 Copying a List
+
+> `.copy()` creates a **shallow copy** — a new list with the same elements. Changes to the copy won't affect the original.
+
+```python
+tea_varieties_copy = tea_varieties.copy()
+```
+
+---
+
+## ⚡ List Comprehension
+
+> A concise one-line way to build a new list by applying an expression to each item in an iterable.
+
+```python
 squared_nums = [x**2 for x in range(10)]
-
-Creates a list of squares from 0 to 9.
+# [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 
 cube_nums = [y**3 for y in range(5)]
+# [0, 1, 8, 27, 64]
+```
 
-Creates a list of cubes from 0 to 4.
+---
 
-Range Function
-range(10)
+## 🔢 `range()`
 
-Generates numbers from 0 to 9 (lazy sequence).
+> `range(n)` generates a lazy sequence of integers from `0` to `n-1`. Commonly used with loops and comprehensions.
+
+```python
+range(10)        # 0, 1, 2, ..., 9
+list(range(10))  # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+---
+
+## 📌 Quick Reference
+
+| Operation | Syntax | Notes |
+|---|---|---|
+| Create | `[a, b, c]` | Mixed types allowed |
+| Index | `lst[i]` | Negative index counts from end |
+| Slice | `lst[start:stop]` | `stop` is exclusive |
+| Shallow copy (slice) | `lst[:]` | Same as `.copy()` |
+| Modify element | `lst[i] = val` | In-place |
+| Append | `lst.append(val)` | Adds to end |
+| Insert | `lst.insert(i, val)` | Shifts elements right |
+| Remove by value | `lst.remove(val)` | First match only |
+| Remove by position | `lst.pop(i)` | Default: last element |
+| Membership test | `val in lst` | Returns `True`/`False` |
+| Copy | `lst.copy()` | Shallow copy |
+| Comprehension | `[expr for x in iter]` | Concise list building |
